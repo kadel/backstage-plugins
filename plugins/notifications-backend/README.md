@@ -129,7 +129,7 @@ Add the following code to the `packages/backend/src/index.ts`:
 const backend = createBackend();
 
 /* highlight-add-next-line */
-backend.add(import('@janus-idp/backstage-plugin-notifications-backend/alpha'));
+backend.add(import('@janus-idp/plugin-notifications-backend/alpha'));
 
 backend.start();
 ```
