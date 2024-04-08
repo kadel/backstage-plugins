@@ -1,0 +1,1 @@
+export { MyPluginEntityContent } from './MyPluginEntityContent';

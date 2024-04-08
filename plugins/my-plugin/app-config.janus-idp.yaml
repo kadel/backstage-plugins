@@ -1,0 +1,13 @@
+dynamicPlugins:
+  frontend:
+    janus-idp.backstage-plugin-my-plugin:
+      dynamicRoutes:
+        - path: /my-plugin
+          importName: MyPluginPage
+          menuItem: # optional, allows you to populate main sidebar navigation
+            icon: fooIcon # Backstage system icon
+            text: Foo Plugin Page # menu item text
+
+      mountPoints:
+        - mountPoint: entity.page.my-plugin
+          importName: MyPluginEntityPage
