@@ -175,6 +175,12 @@ export function registerScriptCommand(program: Command) {
     );
 
   command
+    .command('registry-metadata')
+    .description('Generate metadata for the plugin registry')
+    .requiredOption('-f, --index-file <file>', 'Path to the index file')
+    .action(lazy(() => import('./registry-metadata').then(m => m.command)));
+
+  command
     .command('schema')
     .description('Print configuration schema for a package')
     .action(lazy(() => import('./schema').then(m => m.default)));

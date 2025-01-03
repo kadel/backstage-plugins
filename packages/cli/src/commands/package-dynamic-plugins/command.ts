@@ -8,6 +8,7 @@ import path from 'path';
 
 import { paths } from '../../lib/paths';
 import { Task } from '../../lib/tasks';
+import { PluginRegistryMetadata } from './types';
 
 export async function command(opts: OptionValues): Promise<void> {
   const { forceExport, preserveTempDir, tag, useDocker } = opts;
@@ -72,7 +73,7 @@ export async function command(opts: OptionValues): Promise<void> {
   const tmpDir = fs.mkdtempSync(
     path.join(os.tmpdir(), 'package-dynamic-plugins'),
   );
-  const pluginRegistryMetadata = [];
+  const pluginRegistryMetadata: PluginRegistryMetadata = [];
   try {
     // copy the dist-dynamic output folder for each plugin to some temp directory and generate the metadata entry for each plugin
     for (const pluginPkg of packages) {
@@ -127,6 +128,7 @@ export async function command(opts: OptionValues): Promise<void> {
         );
       }
     }
+    console.log(pluginRegistryMetadata);
     // Write the plugin registry metadata
     const metadataFile = path.join(tmpDir, 'index.json');
     Task.log(`Writing plugin registry metadata to '${metadataFile}'`);
@@ -136,6 +138,8 @@ export async function command(opts: OptionValues): Promise<void> {
     );
     // run the command to generate the image
     Task.log(`Creating image using ${containerTool}`);
+    console.log(pluginRegistryMetadata);
+    console.log(JSON.stringify(pluginRegistryMetadata));
     await Task.forCommand(
       `echo "from scratch
 COPY . .

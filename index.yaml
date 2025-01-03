@@ -1,0 +1,7 @@
+plugins:
+  - image: "ghcr.io/jesuino/backstage-community-plugin-code-coverage-backend:0.2.32"
+    name: "Code Coverage Backend"
+    description: "A plugin to show code coverage data"
+  - image: "quay.io/tkral/gitlab-org-plugin:rhdh-1.3-fix1"
+    name: "Gitlab Org Plugin"
+    description: "A plugin to show Gitlab Org data"
